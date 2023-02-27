@@ -10,6 +10,7 @@ let countdownElement = document.querySelector(".countdown");
 let currentIndex = 0;
 let rightAnswers = 0;
 let countDownInterval;
+let countTime = 10;
 
 function getQuestions() {
   let myRequest = new XMLHttpRequest();
@@ -23,7 +24,7 @@ function getQuestions() {
 
       addQuestionData(questionsObject[currentIndex], qCount);
 
-      countDown(5, qCount);
+      countDown(countTime, qCount);
 
       submitButton.onclick = () => {
         let theRightAnswer = questionsObject[currentIndex].right_answer;
@@ -38,7 +39,7 @@ function getQuestions() {
         handleBullets();
 
         clearInterval(countDownInterval);
-        countDown(5, qCount);
+        countDown(countTime, qCount);
 
         showResults(qCount);
       };
